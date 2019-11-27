@@ -1,0 +1,84 @@
+<!-- 
+Login
+<body>
+    <div style="margin: 20px;">
+        <form action="/login" method="POST" >
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <select name="role">
+                <option selected value="student">Student Login</option>
+                <option value="teacher">Teacher Login</option>
+                <option value="admin">Admin Login</option>
+            </select>
+            <br>
+            <button>Login</button>
+        </form>
+        <br>
+        <a href="/register">Registration</a>
+        <hr>
+        <a href="/student">Student's Area</a>
+        <a href="/teacher">Teacher's Area</a>
+        <a href="/admin">Admin's Area</a>
+    </div>
+    
+</body> -->
+
+
+
+<!-- rabin's implementation -->
+<!-- <html>
+<head>
+<title><%= projectName %></title>
+    <link href="/front_page.css" rel="stylesheet" type="text/css" >
+<body>
+<a href="/"><h1><%= projectName %></h1></a>
+    <div class="loginbox">
+        <h1>Login</h1>
+        <form>
+            <p>Username</p>
+            <input type="text" name="username" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" name="password" placeholder="Enter Password">
+            <input type="submit" name="" value="Login"><br>
+            <a href="#">Forgot password?</a><br>
+            <a href="#">Sign up</a>
+        </form>
+        
+    </div> 
+
+</body>
+</head>
+</html> -->
+
+<html>
+<head>
+    <title><%= projectName %></title>
+    <link href="front_page.css" rel="stylesheet" type="text/css" >
+</head>
+<body>
+    <div class="loginbox">
+        <h1>Login</h1>
+        <form method="POST" action="/login">
+            <p>Username</p>
+            <input type="text" name="username" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" name="password" placeholder="Enter Password"><br>
+            <select name="role">
+                <option selected value="student">Student Login</option>
+                <option value="teacher">Teacher Login</option>
+                <option value="admin">Admin Login</option>
+            </select>
+                <input type="submit" name="" value="Login"><br>
+            <a href="#">Forgot password?</a><br>
+            <a href="/register">Register</a>
+        </form>
+        
+    </div> 
+    <a href="/"><button>Home</button></a>
+    <button><a href="/student">Student's Area</a></button>
+    <button><a href="/teacher">Teacher's Area</a></button>
+    <button><a href="/admin">Admin's Area</a></button>
+
+</body>
+
+</html>

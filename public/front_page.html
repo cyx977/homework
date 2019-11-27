@@ -1,0 +1,34 @@
+
+<html>
+<head>
+    <title><%= projectName %></title>
+    <link href="front_page.css" rel="stylesheet" type="text/css" >
+</head>
+<body>
+    <div>
+        <button><a href="/student">Student's Area</a></button>
+        <button><a href="/teacher">Teacher's Area</a></button>
+        <button><a href="/admin">Admin's Area</a></button>
+    </div>
+    <div class="loginbox">
+        <h1>Login</h1>
+        <form method="POST" action="/login">
+            <p>Username</p>
+            <input type="text" name="username" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" name="password" placeholder="Enter Password"><br>
+            <select name="role">
+                <option selected value="student">Student Login</option>
+                <option value="teacher">Teacher Login</option>
+                <option value="admin">Admin Login</option>
+            </select>
+                <input type="submit" name="" value="Login"><br>
+            <a href="#">Forgot password?</a><br>
+            <a href="/reigster">Register</a>
+        </form>
+        
+    </div> 
+
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+config/passkey.json
+node_modules/*
+git
