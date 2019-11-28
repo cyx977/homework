@@ -4,7 +4,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "homework": "nodemon app.js"
+    "homework": "nodemon app.js",
+    "start": "node app.js"
   },
   "author": "Santosh, Rabin, Dibas",
   "license": "ISC",
