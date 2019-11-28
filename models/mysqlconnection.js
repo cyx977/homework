@@ -5,7 +5,8 @@ var connection = mysql.createConnection({
     user     : config.get("user"),
     password : config.get("password"),
     host     : config.get("host"),
-    database : config.get("database")
+    database : config.get("database"),
+    table: "Enrolled_by"
   });
 
 module.exports = connection;
