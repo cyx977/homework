@@ -1,14 +1,14 @@
 //dependencies
-const express                  = require("express");
-const config                   = require("config");
-const session                  = require('express-session');
-const adminArea                = require("./routes/admin");
-const studentArea              = require("./routes/student");
-const teacherArea              = require("./routes/teacher");
-const registration             = require("./routes/register");
-const mysqlConnection          = require("./models/mysqlconnection");
-const login                    = require("./routes/login");
-const logout                   = require("./routes/logout");
+let express                      = require("express"),
+    config                       = require("config"),
+    session                      = require('express-session'),
+    login                        = require("./routes/login"),
+    adminArea                    = require("./routes/admin"),
+    studentArea                  = require("./routes/student"),
+    teacherArea                  = require("./routes/teacher"),
+    registration                 = require("./routes/register"),
+    mysqlConnection              = require("./models/mysqlconnection"),
+    logout                       = require("./routes/logout");
 
 //application object
 const app                      = express();

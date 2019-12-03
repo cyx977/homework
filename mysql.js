@@ -22,6 +22,8 @@ const usar = [
     { Sid: 101, cid: 'csc-401' }
 ]
 
+
+
 connection.query(sql, (err, data, fields)=>{
     if(err){
         console.log("error", err);
