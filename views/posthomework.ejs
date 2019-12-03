@@ -1,2 +1,22 @@
-<link href="/front_page.css" rel="stylesheet" type="text/css" >
-<% include teacher/teachermenu.ejs %>
+<% include partials/bshead.ejs %>
+
+Post Homework
+<form>
+    <label for="batch">Select Batch to Assign Homework</label>
+    <select id="batch">
+        <% data.forEach((batch)=>{ %>
+            <option value="<%= batch.id; %>">
+                    <%= batch.batch; %> 
+            </option>
+        <% }) %>
+    </select>
+    <br>
+    <label for="title">Title of the Homework</label>
+    <input type="text" name="title" placeholder="Title of the Homework" id="title" required>
+    <label for="deadline">Deadline of the Homework</label>
+    <input type="date" name="deadline" placeholder="Deadline" id="deadline" required>
+    <button>Add Homework</button>
+</form>
+
+<% include partials/bsfoot.ejs %>
+

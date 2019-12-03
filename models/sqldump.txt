@@ -1,1 +1,3 @@
-CREATE TABLE `homework`.`batches` ( `id` INT NOT NULL AUTO_INCREMENT , `batch` VARCHAR(20) NOT NULL , PRIMARY KEY (`id`), UNIQUE (`batch`)) ENGINE = InnoDB;
+CREATE Database homework;
+CREATE TABLE `homework`.`batch` ( `id` INT NOT NULL AUTO_INCREMENT , `batch` VARCHAR(30) NOT NULL , PRIMARY KEY (`id`), UNIQUE (`batch`)) ENGINE = InnoDB;
+CREATE TABLE `homework`.`subjects` ( `id` INT NOT NULL AUTO_INCREMENT , `Subject_Name` VARCHAR(30) NOT NULL , `Subject_Code` VARCHAR(20) NOT NULL , PRIMARY KEY (`id`), UNIQUE (`Subject_Name`), UNIQUE (`Subject_Code`)) ENGINE = InnoDB;

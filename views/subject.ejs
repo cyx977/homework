@@ -1,0 +1,35 @@
+Add Subject
+<table>
+        <tr>
+            <th>Subject_ID</th>
+            <th>Subject_Name</th>
+            <th>Subject_Code</th>
+            <th>Action</th>
+        </tr>
+<% data.forEach((subject)=>{ %>
+    
+        <tr>
+            <td>    <%= subject.id; %></td>
+            <td>    <%= subject.Subject_Name; %></td>
+            <td>    <%= subject.Subject_Code; %></td>
+            <td><a href="/admin/deletesubject/<%= subject.id %>"><button>Delete</button></a></td>
+        </tr>
+ 
+
+<% }) %>
+</table>
+
+<body>
+    <div style="margin: 20px;">
+        <form action="/admin/addsubject" method="POST" >
+            <input type="text" name="subjectname" placeholder="Subject Name" required>
+            <input type="text" name="subjectcode" placeholder="Subject Code" required>
+            <button>Add</button>
+        </form>
+        <br>
+    </div>
+    
+</body>
+
+
+
