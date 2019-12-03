@@ -48,6 +48,6 @@ app.post("/", (req, res)=>{
 
 
 //express listen
-app.listen(/*config.get("portNum")*/process.env.PORT, ()=>{
+app.listen(config.get("portNum")/*process.env.PORT */, ()=>{
     console.log(`${config.get("projectName")} Server started at port ${config.get("portNum")}`);
 });

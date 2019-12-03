@@ -1,8 +1,10 @@
 const express = require("express");
 const session = require("express-session");
 const router = express.Router();
+const isteacherloggedin = require("../middlewares/isteacherloggedin.js");
 
-router.get("/", (req, res)=>{
+
+router.get("/",isteacherloggedin, (req, res)=>{
     if(session.user == undefined){
         res.redirect("/");
     }else if(session.user.role == "teacher"){
@@ -12,16 +14,16 @@ router.get("/", (req, res)=>{
     }
 });
 
-router.get("/post", (req, res)=>{
+router.get("/post",isteacherloggedin, (req, res)=>{
     res.render("posthomework" ,{teacher: session.user.username});
 });
 
-router.get("/homeworks", (req, res)=>{
+router.get("/homeworks",isteacherloggedin, (req, res)=>{
     res.send("not implemented yet");
 });
 
 
-router.post("/post", (req, res)=>{
+router.post("/post",isteacherloggedin, (req, res)=>{
     
 });
 

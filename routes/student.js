@@ -1,8 +1,10 @@
 const express = require("express");
 const session = require("express-session");
 const router = express.Router();
+const isstudentloggedin = require("../middlewares/isstudentloggedin.js");
 
-router.get("/", (req, res)=>{
+
+router.get("/",isstudentloggedin, (req, res)=>{
     if(session.user == undefined){
         res.redirect("/");
     }else if(session.user.role == "student"){
@@ -12,7 +14,7 @@ router.get("/", (req, res)=>{
     }
 });
 
-router.get("/homeworks", (req, res)=>{
+router.get("/homeworks",isstudentloggedin, (req, res)=>{
     res.send("not implemented yet");
 });
 
