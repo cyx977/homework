@@ -8,7 +8,10 @@ let express                      = require("express"),
     teacherArea                  = require("./routes/teacher"),
     registration                 = require("./routes/register"),
     mysqlConnection              = require("./models/mysqlconnection"),
-    logout                       = require("./routes/logout");
+    logout                       = require("./routes/logout"),
+    fileUpload                   = require("express-fileupload");
+
+
 
 //application object
 const app                      = express();
@@ -18,6 +21,10 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./public"));
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : 'uploads/'
+}));
 
 //session config
 app.use(session({
@@ -41,11 +48,9 @@ app.get("/", (req,res)=>{
     res.render("index", {projectName: config.get("projectName")});
 });
 
-
-app.post("/", (req, res)=>{
-    res.send("heheheheh");
-});
-
+app.get("/asd", (req, res)=>{
+    res.render("sendmail");
+})
 
 //express listen
 app.listen(config.get("portNum")/*process.env.PORT */, ()=>{

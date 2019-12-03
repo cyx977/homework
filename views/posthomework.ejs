@@ -1,22 +1,32 @@
 <% include partials/bshead.ejs %>
+    Post Homework
+    <form method="POST" action="/teacher/post">
+        <label for="batch">Select Batch to Assign Homework</label>
+        <select id="batch" name="batch">
+            <% batch.forEach((batch)=>{ %>
+                <option value="<%= batch.id; %>">
+                        <%= batch.batch; %> 
+                </option>
+            <% }) %>
+        </select>
+        <label for="subject">Select Subject</label>
 
-Post Homework
-<form>
-    <label for="batch">Select Batch to Assign Homework</label>
-    <select id="batch">
-        <% data.forEach((batch)=>{ %>
-            <option value="<%= batch.id; %>">
-                    <%= batch.batch; %> 
-            </option>
-        <% }) %>
-    </select>
-    <br>
-    <label for="title">Title of the Homework</label>
-    <input type="text" name="title" placeholder="Title of the Homework" id="title" required>
-    <label for="deadline">Deadline of the Homework</label>
-    <input type="date" name="deadline" placeholder="Deadline" id="deadline" required>
-    <button>Add Homework</button>
-</form>
+        <select id="subject" name="subject">
+                <% subjects.forEach((subject)=>{ %>
+                    <option value="<%= subject.id; %>">
+                            <%= subject.Subject_Name; %>
+                    </option>
+                <% }) %>
+            </select>
+        <br>
+        <label for="title">Title of the Homework</label>
+        <input type="text" name="title" placeholder="Title of the Homework" id="title" required>
+        <label for="deadline">Deadline of the Homework</label>
+        <input type="date" name="deadline" placeholder="Deadline" id="deadline" required>
+        <br><label for="deadline">Body of the Homework</label>
+        <textarea name="content" id="content" placeholder="Body of the Homework" required></textarea>
+        <button>Add Homework</button>
+    </form>
 
 <% include partials/bsfoot.ejs %>
 

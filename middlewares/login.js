@@ -7,7 +7,7 @@ const mongoose          = require("mongoose");
 //establishing mongodb connection
 mongoose.connect('mongodb://localhost:27017/homework', {useNewUrlParser: true, useUnifiedTopology: true});
 
-const User = require("../models/user.js");
+const User = require("../models/userMongoose.js");
 
 //schema for login
 const schema = {

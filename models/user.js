@@ -1,11 +1,16 @@
 const mongoose = require("mongoose");
+
 const userSchema = new mongoose.Schema({
-    username: String,
-    password: String,
-    role: {
+    username: {
         type: String,
-        enum : ["student", "admin", "teacher"]
+        required: true,
+        validate: {
+            validator: function(){
+                return true;
+            },
+            message: "untrue asdasd"
+        }
     }
 });
 
-module.exports = new mongoose.model("member", userSchema);
+const User = mongoose.model("user", userSchema);

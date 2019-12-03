@@ -10,7 +10,7 @@ router.get("/", (req, res)=>{
 
 
 router.post("/", (req, res)=>{
-    res.send("Registration Closed");
+    res.send("Registration Closed Contact your Admin");
 });
 
 module.exports = router;
