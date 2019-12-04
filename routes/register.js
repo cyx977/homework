@@ -26,7 +26,13 @@ router.post("/", (req, res)=>{
         if(err){
             console.log(err);
         }else{
-            console.log(validData);
+            user = new User({
+                username: req.body.username,
+                password: crypto.createHash('md5').update(req.body.password).digest("hex"),
+                role: req.body.role,
+            });
+            user.save();
+            res.send(`Successfully registered ${user.username}`);
         }
     });
 });
