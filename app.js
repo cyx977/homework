@@ -41,16 +41,12 @@ app.use("/logout", logout);
 app.use("/admin", adminArea);
 app.use("/teacher", teacherArea);
 app.use("/student", studentArea);
-app.use("/register", registration);
+app.use("/admin/register", registration);
 
 
 app.get("/", (req,res)=>{
     res.render("index", {projectName: config.get("projectName")});
 });
-
-app.get("/asd", (req, res)=>{
-    res.render("sendmail");
-})
 
 //express listen
 app.listen(config.get("portNum")/*process.env.PORT */, ()=>{

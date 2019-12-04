@@ -18,7 +18,7 @@ router.get("/",isteacherloggedin, (req, res)=>{
         res.render("teacherindex" ,{teacher: session.user.username});
 });
 
-router.get("/post", (req, res)=>{
+router.get("/post",isteacherloggedin, (req, res)=>{
     const sql = "select * from batch";
     mysql.query(sql, (err, batch)=>{
         if(err){
@@ -31,14 +31,14 @@ router.get("/post", (req, res)=>{
                     console.log(err);
                     res.send("Error in Database");
                 }else{
-                    res.render("posthomework" ,{batch: batch, subjects: subjects});
+                    res.render("posthomework" ,{batch: batch, subjects: subjects,teacher: session.user.username});
                 }
             })
         }
     })
 });
 
-router.post("/post", (req, res)=>{
+router.post("/post",isteacherloggedin, (req, res)=>{
     Joi.validate(req.body, homeworkSchema, (err, validData)=>{
         if(err == null){
             const sql = `INSERT INTO homework (id, batch, Title, Deadline, Content, Teacher, Assigned_Date) VALUES (NULL, '${validData.batch}', '${validData.title}', '${validData.deadline}', '${validData.content}', '${session.user.username}', NOW())`;
@@ -55,18 +55,18 @@ router.post("/post", (req, res)=>{
     })
 });
 
-router.get("/homeworks", (req, res)=>{
+router.get("/homeworks",isteacherloggedin, (req, res)=>{
     const sql = `SELECT A.id, B.batch, A.Title, A.Deadline, A.Content, A.Teacher, A.Assigned_Date FROM homework AS A INNER join batch as B ON A.batch = B.id`;
     mysql.query(sql,(err, data)=>{
         if(err){
             console.log(err);
         }else{
-            res.render("viewhomework", {data: data});
+            res.render("viewhomework", {data: data ,teacher: session.user.username});
         }
     });
 });
 
-router.get("/deletehomework/:id", (req, res)=>{
+router.get("/deletehomework/:id",isteacherloggedin, (req, res)=>{
     const id = req.params.id;
     let sql = `delete from homework where id = ${id}`
     mysql.query(sql,(err, data)=>{

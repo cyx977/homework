@@ -24,11 +24,11 @@ const subjectSchema = {
 };
 
 
-router.get("/mail", (req, res)=>{
-    res.render("sendmail", {teacher: teacher, subject: subject});
+router.get("/mail",isadminloggedin, (req, res)=>{
+    res.render("sendmail", {admin: session.user.username, teacher: teacher, subject: subject});
 });
 
-router.post("/mail", async (req, res)=>{
+router.post("/mail",isadminloggedin, async (req, res)=>{
     //create mailer transport object
     if(req.body.password != "bit_cit_2017"){
         //delete uploaded file 
@@ -93,7 +93,7 @@ router.get("/",isadminloggedin, (req, res)=>{
         res.render("adminindex" ,{admin: session.user.username});
 });
 
-router.get("/addbatch", (req, res)=>{
+router.get("/addbatch",isadminloggedin, (req, res)=>{
     const sql = "select * from batch";
     mysql.query(sql, (err, data)=>{
         if(err){
@@ -108,7 +108,7 @@ router.get("/addbatch", (req, res)=>{
 
 
 
-router.post("/addbatch", (req, res)=>{
+router.post("/addbatch",isadminloggedin, (req, res)=>{
     Joi.validate(req.body, batchSchema, (err, validData)=>{
         if(err == null){
             const sql = `INSERT INTO batch (id, batch) VALUES (NULL, '${req.body.batch}')`;
@@ -127,13 +127,13 @@ router.post("/addbatch", (req, res)=>{
 
 
 router.get("/adduser",isadminloggedin, (req, res)=>{
-    res.render("adduser");
+    res.render("adduser", {admin: session.user.username});
 });
 router.post("/adduser",isadminloggedin, (req, res)=>{
-    res.render("adduser");
+    res.render("adduser", {admin: session.user.username});
 });
 
-router.get("/subject", (req, res)=>{
+router.get("/subject",isadminloggedin, (req, res)=>{
     const sql = "select * from subjects";
     mysql.query(sql, (err, data)=>{
         if(err){
@@ -145,7 +145,7 @@ router.get("/subject", (req, res)=>{
     })
 });
 
-router.post("/addsubject", (req, res)=>{
+router.post("/addsubject",isadminloggedin, (req, res)=>{
     Joi.validate(req.body, subjectSchema, (err, validData)=>{
         if(err == null){
             const sql = `INSERT INTO subjects (id, Subject_Name, Subject_Code) VALUES (NULL, '${req.body.subjectname}', '${req.body.subjectcode}')`;
@@ -167,7 +167,7 @@ router.post("/addsubject", (req, res)=>{
     })
 });
 
-router.get("/deletesubject/:id", (req, res)=>{
+router.get("/deletesubject/:id",isadminloggedin, (req, res)=>{
     const id = req.params.id;
     let sql = `delete from subjects where id = ${id}`
     let sql1 = `select Subject_Code from subjects where id = ${id}`
@@ -194,7 +194,7 @@ router.get("/deletesubject/:id", (req, res)=>{
     
 });
 
-router.get("/deletebatch/:id", (req, res)=>{
+router.get("/deletebatch/:id",isadminloggedin, (req, res)=>{
     const id = req.params.id;
     let sql = `delete from batch where id = ${id}`
     mysql.query(sql,(err, data)=>{

@@ -1,8 +1,9 @@
-<a href="/"><h1><%= projectName %></h1></a>
+<% include partials/bshead %>
+<hr>
 Registration
 <body>
     <div style="margin: 20px;">
-        <form action="/register" method="POST" >
+        <form action="/admin/register" method="POST" >
             <input type="text" name="username" placeholder="Username">
             <input type="password" name="password" placeholder="Password">
             <select name="role">
@@ -16,6 +17,8 @@ Registration
     </div>
     
 </body>
+<% include partials/bsfoot %>
+
 
 
 

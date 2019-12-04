@@ -1,3 +1,6 @@
+<% include partials/bshead %>
+<hr>
+
 View Homework
 <table style="border:solid 1px;">
     <tr>
@@ -12,7 +15,7 @@ View Homework
 <% data.forEach((homework)=>{ %>
     <tr>
         <td>    <%= homework.id; %></td>
-        <td>     <b> <%= homework.Title; %> </b>   </td>
+        <td>     <a href="/viewhomework/<%= homework.id; %>"><b> <%= homework.Title; %> </b></a>   </td>
         <td>    <%= homework.batch; %></td>
         <td>    <%= homework.Assigned_Date.slice(0,11); %></td>
         <td>    <%= homework.Deadline; %></td>
@@ -21,3 +24,4 @@ View Homework
     </tr>
 <% }) %>
 </table>
+<% include partials/bsfoot %>
